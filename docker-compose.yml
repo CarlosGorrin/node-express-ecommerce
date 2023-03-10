@@ -7,7 +7,18 @@ services:
       - POSTGRES_DB=my_store
       - POSTGRES_USER=carlos
       - POSTGRES_PASSWORD=admin1234
+      - POSTGRES_DATA_DIR=/var/lib/postgresql/custom_data
     ports:
-      - 5433:5432
+      - 5432:5432
     volumes:
-      - ./postgres_data:/var/lib/postgresql/data
+      - ./postgres_data:/var/lib/postgresql/custom_data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=speedtetris@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=root
+    ports:
+      - 5050:80
+
+
